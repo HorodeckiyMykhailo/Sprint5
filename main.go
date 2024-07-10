@@ -36,6 +36,9 @@ func (t Training) distance() float64 {
 func (t Training) meanSpeed() float64 {
 	// вставьте ваш код ниже
 	durationInHours := t.Duration.Hours()
+	if durationInHours == 0 {
+		return 0
+	}
 	result := t.distance() / float64(durationInHours)
 	return result
 }
@@ -188,6 +191,9 @@ type Swimming struct {
 // Это переопределенный метод Calories() из Training.
 func (s Swimming) meanSpeed() float64 {
 	// вставьте ваш код ниже
+	if s.Duration.Hours() == 0 {
+		return 0
+	}
 	firstMultiplier := float64(s.LengthPool) * float64(s.CountPool)
 	secondMultiplier := firstMultiplier / float64(MInKm)
 	result := secondMultiplier / float64(s.Duration.Hours())
